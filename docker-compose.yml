@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.16-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitdata:/var/lib/rabbitmq
+      - rabbitlogs:/var/log/rabbitmq
+
+volumes:
+  rabbitdata:
+  rabbitlogs:

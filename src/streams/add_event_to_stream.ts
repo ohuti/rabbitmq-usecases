@@ -19,7 +19,7 @@ import { sleep } from '../utils'
 
     const userCreated = {
         event: 'UserCreated',
-        ocurredAt: user.createdAt,
+        occurredAt: user.createdAt,
         data: user
     }
     channel.sendToQueue('my-stream', Buffer.from(JSON.stringify(userCreated)))
@@ -28,7 +28,7 @@ import { sleep } from '../utils'
     user.updatedAt = new Date().toISOString()
     const userUpdated = {
         event: 'UserUpdated',
-        ocurredAt: user.updatedAt,
+        occurredAt: user.updatedAt,
         data: user
     }
     channel.sendToQueue('my-stream', Buffer.from(JSON.stringify(userUpdated)))

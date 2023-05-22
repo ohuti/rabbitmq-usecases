@@ -11,7 +11,7 @@ import * as amqp from 'amqplib'
     await channel.prefetch(1)
     await channel.consume('my-stream', (message) => {
         const event = JSON.parse(message.content.toString())
-        console.info(`[x] Event ${event.event} received at ${event.ocurredAt}.`)
+        console.info(`[x] Event ${event.event} received at ${event.occurredAt}.`)
         console.info(`  [-] User name: ${event.data.name}.`)
         console.info(`  [-] User e-mail: ${event.data.email}.`)
         channel.ack(message)

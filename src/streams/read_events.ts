@@ -1,6 +1,6 @@
 import * as amqp from 'amqplib'
 
-(async () => {
+(async (offset: 'first' | 'last'| 'next'| number = 'first') => {
     const connection = await amqp.connect('amqp://localhost')
     const channel = await connection.createChannel()
     await channel.assertQueue('my-stream', { durable: true, exclusive: false, autoDelete: false, arguments: {
@@ -15,6 +15,6 @@ import * as amqp from 'amqplib'
         console.info(`  [-] User name: ${event.data.name}.`)
         console.info(`  [-] User e-mail: ${event.data.email}.`)
         channel.ack(message)
-    }, { arguments: { 'x-stream-offset': 'first' }})
+    }, { arguments: { 'x-stream-offset': offset }})
     console.info('[x] Waiting for logs. To exit press CTRL+C...')
 })()
